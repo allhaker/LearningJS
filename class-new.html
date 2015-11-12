@@ -1,0 +1,30 @@
+<script>
+"use strict";
+
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  testFunction() {
+    console.log("Testing my function");
+  }
+
+  speak() {
+    console.log(this.name + ' makes a noise.');
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log(this.name + ' barks.');
+  }
+}
+
+var cat = new Animal("cat");
+cat.speak();
+cat.testFunction();
+
+var myDog = new Dog("Pixel");
+myDog.speak();
+myDog.testFunction();
+</script>

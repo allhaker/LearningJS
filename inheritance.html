@@ -1,0 +1,27 @@
+<script>
+  function ParentClass() {
+    this.parent_property1 = "Hola";
+    this.parentmethod1 = function parentmethod1(arg1) {
+      return arg1 + " Parent method 1 return data ...";
+    }
+  }
+
+  function ChildClass() {
+    this.child_property1 = "Adios";
+    this.childtmethod1 = function childtmethod1(arg1) {
+      return arg1 + " Child method 1 return data ...";
+    }
+  }
+
+  ChildClass.prototype = new ParentClass()
+
+  var instance1 = new ChildClass();
+  alert(instance1.childtmethod1(instance1.child_property1));
+  alert(instance1.parentmethod1(instance1.parent_property1));
+
+  ChildClass.prototype.parentmethod1 = function parentmethod1(arg1) {
+    return arg1 + " Parent method 1 overriden ...";
+  }
+  alert(instance1.parentmethod1("Result"));
+
+</script>

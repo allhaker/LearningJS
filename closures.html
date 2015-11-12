@@ -1,0 +1,42 @@
+<script type="text/javascript">
+function Person(name) {
+  var inName = name;
+  this.outName = name;
+
+  this.getName = function () {
+    return inName;
+  };
+}
+
+var me = new Person("Oleg");
+alert(me.getName());
+console.log(me.outName);
+
+//var myFunc = makeFunc();
+//myFunc();
+
+//
+function sendRequest () { //I AM CLOSURE
+  var requestID = '123';
+  $.ajax({
+    url:'text',
+    success: function (resonse) {
+      alert('Request' + requestID + 'Data' + resonse); //requestID is available from this function because
+                                                       //function is a closure and can see outer scope
+    }
+  })
+} //END OF CLOUSRE
+//The solution to this puzzle is that myFunc has become a closure.
+//A closure is a special kind of object that combines two things: a function, and the environment in which
+//that function was created.
+//The environment consists of any local variables that were in-scope at the time that the closure was created.
+function makeFunc() {
+  var name = "Mozilla";
+  function displayName() {
+    alert(name);
+  }
+  return displayName;
+};
+
+
+</script>

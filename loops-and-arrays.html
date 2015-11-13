@@ -1,0 +1,36 @@
+<script>
+function myLoopTest () {
+  this.myArr = ['1','2','3','4','5']
+  this.forTest() {
+    console.log("I am normal loop");
+    for(var i = 0; i<myArr.length; i++) {
+      console.log(myArr[i]);
+    }
+  }
+  this.forInTest() {
+    console.log("I am forIn loop");
+    for (key in myArr) {
+      console.log(myArr[key]);
+    }
+  }
+  this.forOfTest() {
+    console.log("I am forOf loop");
+    for (val of myArr) {
+      console.log(val);
+    }
+  }
+  this.forEachTest() {
+    console.log("I am forEach loop");
+    myArr.forEach(function(val) {
+      console.log(val);
+    });
+  }
+}
+
+var testVariable = new myLoopTest();
+testVariable.forTest();
+testVariable.forInTest();
+testVariable.forOfTest();
+testVariable.forEachTest();
+
+</script>

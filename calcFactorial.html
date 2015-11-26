@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Calculate Factorial</title>
+</head>
+
+<body>
+  <h1>I am a Factorial Calculator</h1>
+  <fieldset style="width:300px;margin-bottom:50px">
+    <form id="factor-iterative">
+      <h2>Iterative approach</h2>
+      <label for="factorial">Enter Value</label>
+      <input type "text" id="factorial1">
+      </textarea>
+      <button type="submit">Calculate</button>
+    </form>
+  </fieldset>
+  <fieldset style="width:300px;">
+    <form id="factor-recursive">
+      <h2>Recursive approach</h2>
+      <label for="factorial">Enter Value</label>
+      <input type "text" id="factorial2">
+      </textarea>
+      <button type="submit">Calculate</button>
+    </form>
+  </fieldset>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  <script>
+    $("#factor-iterative").on('submit', function(e) {
+      e.preventDefault();
+      $("#factor-iterative").find("h3").remove();
+      try {
+        var res = factorIterative($('#factorial1').val());
+        var myTag = "<h3>I am your factorial " + res + "</h3>";
+      } catch (e) {
+        var res = e.message;
+        var myTag = "<h3>" + res + "</h3>";
+      }
+      $("#factor-iterative").append(myTag);
+    });
+
+    $("#factor-recursive").on('submit', function(e) {
+      e.preventDefault();
+      $("#factor-recursive").find("h3").remove();
+      try {
+        var res = factorRecursive($('#factorial2').val());
+        var myTag = "<h3>I am your factorial " + res + "</h3>";
+      } catch (e) {
+        var res = e.message;
+        var myTag = "<h3>" + res + "</h3>";
+      }
+      $("#factor-recursive").append(myTag);
+    });
+
+    function factorIterative(number) {
+      var myInt = parseInt(number);
+      if (isNaN(myInt)) {
+        throw new Error("You have entered a string");
+        return 0;
+      }
+      var res = 1;
+      for (var i = 1; i <= myInt; i++) {
+        res *= i;
+      }
+      return res
+    }
+
+    function factorRecursive(number) {
+      var myInt = parseInt(number);
+      if (isNaN(myInt)) {
+        throw new Error("You have entered a string");
+      }
+      if (myInt < 0) {
+        return -1;
+      }
+      // If the number is 0, its factorial is 1.
+      else if (myInt == 0) {
+        return 1;
+      }
+      // Otherwise, call this recursive procedure again.
+      else {
+        return (myInt * factorRecursive(myInt - 1));
+      }
+    }
+  </script>
+</body>
+
+</html>
